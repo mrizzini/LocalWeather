@@ -46,7 +46,8 @@ $(document).ready(function() {
                 Faren = Math.round(Faren);
                 
                 $('#temp').html(Faren);
-                $('#tempunit').html("&#8457;");
+                $('#degree').html(String.fromCharCode(176));
+                $('#measure').html("F");
 			    $('#city').html(data.name);
 			    $('#country').html(data.sys.country);
 			    $('#desc').html(data.weather[0].description);
@@ -86,21 +87,23 @@ $(document).ready(function() {
 			        console.log(data.weather[0].icon);
 			        $('#icon').html(icons.mist);
 			    }
-            
-        $('#convert').submit(function(event) {
-            event.preventDefault();
-            console.log(document.getElementById('tempunit').innerHTML);
-        //   if (document.getElementById('tempunit').innerHTML == '&#8457') {
-            var celcius = (Faren - 32) / 1.8;
-            celcius = Math.round(celcius);
-            console.log(celcius);
-            $('#temp').html(celcius + "&#8451;");
-        //   }
-            
-         
-        
         
             
+        $('#convert').click(function () {
+            if (document.getElementById("measure").innerHTML === "F") {
+            var celsius = (Faren - 32) / 1.8;
+            celsius = Math.round(celsius);
+            $('#temp').html(celsius);
+            $('#measure').html("C");
+            $('#buttonText').html("Click to convert to Fahrenheit");
+            console.log('first success');
+          } else  {
+            $('#temp').html(Faren);
+            $('#measure').html("F");
+            $('#buttonText').html("Click to convert to Celsius");
+            console.log('second success');
+          }
+     
         }); 
         
     }
