@@ -33,9 +33,16 @@
     #weather {
         position: relative;
         top: 7em;
-        background-color:rgba(255, 2555, 2555, 0.4);
+        background-color:rgba(255, 255, 255, 0.4);
         border-radius: 15px;
         height: 20em;
+    }
+    .wi {
+        font-size: 2.5em;
+        color: white;
+    }
+    .icon {
+        
     }
     
     /*@font-face {*/
@@ -63,10 +70,7 @@
     /*    src: url(https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/font/weathericons-regular-webfont.woff2) format("truetype");*/
     /* }*/
     
-    .wi {
-        font-size: 2.5em;
-        color: white;
-    }
+
 
     
     
