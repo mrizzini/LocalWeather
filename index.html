@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<meta content="ie=edge" http-equiv="X-UA-Compatible">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link href="localWeatherPage.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.min.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons-wind.min.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+	<title>Your Local Weather</title>
+</head>
+<body style="margin: 0;" id ="locationFunction">
+	<img class="absolute" id="bgimg" src="https://images.unsplash.com/photo-1442213391790-7656f6e368b9?auto=format&fit=crop&w=1353&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D">
+	
+	<div class = "container">
+	<div class = "row">
+	        <header class="col-xs-12 text-center">
+        	    <h1 id ="header">Y<i class="fa fa-sun-o"></i>ur Local Weather </h1>
+	        </header> 
+	       
+        <div id="weather" class=" container-fluid col-xs-8 col-xs-offset-2">
+	        <div class="text-center status">
+               <p><span id="city"></span> <span>, </span> <span id="state"></span> <span id="country"></span></p>
+               
+               <p><span id="temp"> Temperature </span><span id="degree" > </span><span id="measure"></span><form class="convert"><button type="button" class="btn btn-primary" id="buttonText">Click to convert to Celsius</button></form>
+</p>
+               
+               <p id="desc">Description</p>
+
+            </div>
+	        
+	        <div class ="text-center" id="icon">
+	            <!--<button onclick="getLocation()">Try It</button>-->
+	        </div> <br>
+	        <div>
+	        	<p class="text-center">Forecast</p>
+	        </div>
+	        <div class="text-center">
+	        	<p><span>Max Temp: </span><span id="maxTemp"></span><span id="degreeMax" ></span><span id="measureMax"></span></p> 
+	        	<p><span>Min Temp: </span><span id="minTemp"></span><span id="degreeMin" ></span><span id="measureMin"></span></p>
+	        </div>
+	        <!--<div class="text-center" id="sunTime">-->
+	        <!--	<p><i class="wi wi-sunrise"> :</i><span id="sunrise"> </span></p> <br>-->
+	        <!--	<p><i class="wi wi-sunset"> :</i><span id="sunset">   </span></p>-->
+	        <!--</div>-->
+	    </div>    
+
+	</div>
+	</div>
+
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!--<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>-->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="key.js"></script>
+	<script src="localWeatherPage2.js"></script> 
+</body>
+</html>
