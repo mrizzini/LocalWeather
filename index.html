@@ -16,39 +16,32 @@
 	<img class="absolute" id="bgimg" src="https://images.unsplash.com/photo-1442213391790-7656f6e368b9?auto=format&fit=crop&w=1353&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D">
 	
 	<div class = "container">
-	<div class = "row">
-	        <header class="col-xs-12 text-center">
-        	    <h1 id ="header">Y<i class="fa fa-sun-o"></i>ur Local Weather </h1>
-	        </header> 
-	       
-        <div id="weather" class=" container-fluid col-xs-8 col-xs-offset-2">
-	        <div class="text-center status">
-               <p><span id="city"></span> <span>, </span> <span id="state"></span> <span id="country"></span></p>
-               
-               <p><span id="temp"> Temperature </span><span id="degree" > </span><span id="measure"></span><form class="convert"><button type="button" class="btn btn-primary" id="buttonText">Click to convert to Celsius</button></form>
-</p>
-               
-               <p id="desc">Description</p>
-
-            </div>
-	        
-	        <div class ="text-center" id="icon">
-	            <!--<button onclick="getLocation()">Try It</button>-->
-	        </div> <br>
-	        <div>
-	        	<p class="text-center">Forecast</p>
-	        </div>
-	        <div class="text-center">
-	        	<p><span>Max Temp: </span><span id="maxTemp"></span><span id="degreeMax" ></span><span id="measureMax"></span></p> 
-	        	<p><span>Min Temp: </span><span id="minTemp"></span><span id="degreeMin" ></span><span id="measureMin"></span></p>
-	        </div>
-	        <!--<div class="text-center" id="sunTime">-->
-	        <!--	<p><i class="wi wi-sunrise"> :</i><span id="sunrise"> </span></p> <br>-->
-	        <!--	<p><i class="wi wi-sunset"> :</i><span id="sunset">   </span></p>-->
-	        <!--</div>-->
-	    </div>    
-
+		<h1 class="col-xs-12 text-center" id ="header">Y<i class="fa fa-sun-o"></i>ur Local Weather </h1>
 	</div>
+	
+
+    <div id="currentWeather" class="container">
+	    <div class="text-center status">
+            <p><span id="city"></span> <span>, </span> <span id="state"></span> <span id="country"></span></p>
+            <p><span id="temp"> Temperature </span><span id="degree"></span><span id="measure"></span><form class="convert"><button type="button" class="btn btn-primary" id="buttonText">Click to convert to Celsius</button></form></p>
+            <p>You are looking at <span id="desc"></span> right now</p>
+        </div>
+	    <div class ="text-center" id="icon">
+	    </div> 
+	</div>  
+		
+	        
+	<div id="otherWeatherInfo" class="container text-center">    
+	
+		<p class="left"><span>Max Temp: </span><span id="maxTemp"></span><span id="degreeMax" ></span><span id="measureMax"></span></p> 
+		<p class="left"><span>Min Temp: </span><span id="minTemp"></span><span id="degreeMin" ></span><span id="measureMin"></span></p>
+<br>
+	    <p><i class="wi wi-sunrise"> : </i><span id="sunrise"></span></p> <br>
+	    <p><i class="wi wi-sunset"> : </i><span id="sunset"></span></p>
+	       
+	      
+
+
 	</div>
 
 	
