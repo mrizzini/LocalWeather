@@ -8,8 +8,6 @@ $(document).ready(function() {
         navigator.geolocation.getCurrentPosition(function(position) {
             console.log(position.coords.latitude);
             console.log(position.coords.longitude);
-            // var lat = position.coords.latitude; 
-            // var long = position.coords.longitude;
             showWeather(position);
             // add function to get the weather
         });
@@ -51,20 +49,11 @@ $(document).ready(function() {
                 
         $.ajax({
             method: "GET",
-		    url: "https://api.openweathermap.org/data/2.5/weather",
+		    url: "https://api.openweathermap.org/data/2.5/weather?&units=imperial",
 		    data: { apikey: APIKEYWEATHER, lat: lat, lon: long },
             success: function(data) {
                 console.log("success");
-                
-                var valNum = parseFloat(data.main.temp);
-                var Faren = ((valNum - 273.15) * 1.8) + 32;
-                Faren = Math.round(Faren);
-                
-                //the following lines were for min and max temp but i decided not to use
-                // var valMax = parseFloat(data.main.temp_max);
-                // var farenMax = ((valMax - 273.15) * 1.8) + 32;
-                // farenMax = Math.round(farenMax);
-                
+                var Faren = data.main.temp.toFixed(0);
                 // var valMin = parseFloat(data.main.temp_min);
                 // var farenMin = ((valMin - 273.15) * 1.8) + 32;
                 // farenMin = Math.round(farenMin);
@@ -90,17 +79,9 @@ $(document).ready(function() {
                 $('#degree').html(String.fromCharCode(176));
                 $('#measure').html("F");
 			    $('#city').html(data.name);
-			    //$('#country').html(data.sys.country);
 			    $('#desc').html(data.weather[0].description);
 			    $('#sunrise').html(" " + sunriseTime);
 			    $('#sunset').html(" " + sunsetTime);
-			    //the following lines were for min and max temp but i decided not to use
-			    //$('#maxTemp').html(farenMax);
-			    //$('#degreeMax').html(String.fromCharCode(176));
-                //$('#measureMax').html("F");
-			    //$('#minTemp').html(farenMin);
-			    //$('#degreeMin').html(String.fromCharCode(176));
-                //$('#measureMin').html("F");
 			    
 			    //the following if else statements manipulate the DOM by displaying icons and changing the background 
 			    if (data.weather[0].icon === "01n" || data.weather[0].icon === "01d") {
@@ -180,30 +161,7 @@ $(document).ready(function() {
                 $('#buttonText').html("Click to convert to Celsius");
                 console.log('second success');
           }
-          
-          //these lines converted max temp and min temp to F and C
-        //     if (document.getElementById("measureMax").innerHTML === "F") {
-        //         var celsiusMax = (farenMax - 32) / 1.8;
-        //         celsiusMax = Math.round(celsiusMax);
-        //         $('#maxTemp').html(celsiusMax);
-        //         $('#measureMax').html("C");
-        //         console.log('first success');
-        //   } else {
-        //         $('#maxTemp').html(farenMax);
-        //         $('#measureMax').html("F");
-        //         console.log('second success');
-        //   }
-        //   if (document.getElementById("measureMin").innerHTML === "F") {
-        //         var celsiusMin = (farenMin - 32) / 1.8;
-        //         celsiusMin = Math.round(celsiusMin);
-        //         $('#minTemp').html(celsiusMin);
-        //         $('#measureMin').html("C");
-        //         console.log('first success');
-        //   } else {
-        //         $('#minTemp').html(farenMin);
-        //         $('#measureMin').html("F");
-        //         console.log('second success');
-        //   }
+
         }); 
         
     }
