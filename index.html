@@ -12,48 +12,64 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet">
 	<title>Your Local Weather</title>
 </head>
-<body style="margin: 0;" id ="locationFunction">
-	<img class="absolute" id="bgimg" src="https://images.unsplash.com/photo-1442213391790-7656f6e368b9?auto=format&fit=crop&w=1353&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D">
+<body id="locationFunction" style="margin: 0;">
+	<img class="absolute img-responsive" id="bgimg" src="https://images.unsplash.com/photo-1442213391790-7656f6e368b9?auto=format&fit=crop&w=1353&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D">
 	
-	<div class = "container">
-		<h1 class="col-xs-12 text-center" id ="header">Y<i class="fa fa-sun-o"></i>ur Local Weather </h1>
+	<div class="container">
+		<h1 class="col-xs-12 text-center" id="header">Y<i class="fa fa-sun-o"></i>ur Local Weather</h1>
 	</div>
-
-    <div id="currentWeather" class="container">
-	    <div class="text-center status">
-            <!--<p><span id="city"></span> <span>, </span> <span id="state"></span> <span id="country"></span></p>-->
-            <!--<p><span id="temp"> Temperature </span><span id="degree"></span><span id="measure"></span><form class="convert"><button type="button" class="btn btn-primary" id="buttonText">Click to convert to Celsius</button></form></p>-->
-            <!--<p id="desc">Description</p>-->
-            <p><span>Currently, </span> <span id="city"></span> <br> <span> is seeing </span> <span id="desc"></span></p>
-            <p><span> with a temperature of </span><span id="temp"> Temperature </span><span id="degree"></span><span id="measure"></span></p>
-            <button class="btn btn-primary" id="convert">Click to convert to Celsius</button>
-        <!--<span id="country"></span>  Took this out of above line-->
-            
-        </div>
-        <br>
-	    <div class ="text-center" id="icon">
-	    </div> 
-	    <br>
-	    <br>
-	    <div class="text-center">
-	    	<p><span>Sunrise </span><i class="wi wi-sunrise"> : </i><span id="sunrise"></span></p> <br>
-	    	<p><span>Sunset </span><i class="wi wi-sunset"> : </i><span id="sunset"></span></p>
-	    </div>
-	</div>  
-		
-	        
-	<div id="tomorrowWeather" class="container text-center">    
-		<!--<p class="left"><span>Max Temp: </span><span id="maxTemp"></span><span id="degreeMax" ></span><span id="measureMax"></span></p> -->
-		<!--<p class="left"><span>Min Temp: </span><span id="minTemp"></span><span id="degreeMin" ></span><span id="measureMin"></span></p>-->
+	
+	<div class="container" id="currentWeather">
+		<div class="text-center status">
+			<!--<p><span id="city"></span> <span>, </span> <span id="state"></span> <span id="country"></span></p>-->
+			<!--<p><span id="temp"> Temperature </span><span id="degree"></span><span id="measure"></span><form class="convert"><button type="button" class="btn btn-primary" id="buttonText">Click to convert to Celsius</button></form></p>-->
+			<!--<p id="desc">Description</p>-->
+			<p><span>Currently:</span> <span id="main"></span></p>
+			<p><span>Right now,</span> <span id="city"></span><br>
+			<span>is seeing</span> <span id="desc"></span></p>
+			<p><span>with a temperature of</span> <span id="temp"></span><span id="degree"></span><span id="measure"></span></p><button class="btn btn-primary" id="convert">Click to convert to Celsius</button> <!--<span id="country"></span>  Took this out of above line-->
+		</div><br>
+		<div class="text-center" id="icon"></div><br>
 		<br>
-	    <p><span>Around this time tomorrow, you will be looking at </span> <span id="tomorrow"></span> </p>
-	    <p><span id="tomorrowIcon"></span></p>
+		<div class="text-center">
+			<p><span>Sunrise</span> <i class="wi wi-sunrise">:</i> <span id="sunrise"></span></p><br>
+			<p><span>Sunset</span> <i class="wi wi-sunset">:</i> <span id="sunset"></span></p>
+		</div>
 	</div>
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
+	<div class="container text-center row-center" id="fiveDayForecast">
+		<h3>Your 5 Day Forecast</h3>
+		<div class="col-xs-15 col-xs-3">
+			<span id="oneDayTime" style="font-weight: bold;">Day One</span><br>
+			<br>
+			<span id="oneDay"></span>
+		</div>
+		<div class="col-xs-15 col-xs-3">
+			<span id="twoDayTime" style="font-weight: bold;">Day Two</span><br>
+			<br>
+			<span id="twoDay"></span>
+		</div>
+		<div class="col-xs-15 col-xs-3">
+			<span id="threeDayTime" style="font-weight: bold;">Day Three</span><br>
+			<br>
+			<span id="threeDay"></span>
+		</div>
+		<div class="col-xs-15 col-xs-3">
+			<span id="fourDayTime" style="font-weight: bold;">Day Four</span><br>
+			<br>
+			<span id="fourDay"></span>
+		</div>
+		<div class="col-xs-15 col-xs-3">
+			<span id="fiveDayTime" style="font-weight: bold;">Day Five</span><br>
+			<br>
+			<span id="fiveDay"></span>
+		</div>
+	</div>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
 	<!--<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>-->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="key.js"></script>
-	<script src="localWeatherPage2.js"></script> 
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+	<script src="key.js"></script> 
+	<script src="localWeatherPage2.js"></script>
 </body>
 </html>

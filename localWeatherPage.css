@@ -8,43 +8,82 @@
     	background-size: cover;
     }
     #header {
-        position: relative;
-        background-color:rgba(255, 255, 255, 0.7);
-        border-radius: 15px;
-        color: black;
-        font-family: verdana;
-        font-size: 4.5em;
-        top: 1em;
-        word-wrap: break-word;
-        padding: .2em;
+    	position: relative;
+    	background-color: rgba(255, 255, 255, 0.7);
+    	border-radius: 15px;
+    	color: black;
+    	font-family: verdana;
+    	font-size: 4.5em;
+    	top: 1em;
+    	word-wrap: break-word;
+    	padding: .2em;
     }
     span {
-        color: black;
-        font-family: verdana;
-        font-size: 2em;
+    	color: black;
+    	font-family: verdana;
+    	font-size: 2em;
     }
     #currentWeather {
-        position: relative;
-        top: 7em;
-        background-color:rgba(255, 255, 255, 0.8);
-        border-radius: 15px;
-        height: 35em;
-        overflow: auto;
+    	position: relative;
+    	top: 7em;
+    	background-color: rgba(255, 255, 255, 0.8);
+    	border-radius: 15px;
+    	height: 40em;
+    	overflow: auto;
     }
     #tomorrowWeather {
-        position: relative;
-        top: 10em;
-        background-color:rgba(255, 255, 255, 0.8);
-        border-radius: 15px;
-        height: 14em;
-        overflow: auto;
-        margin-bottom: 2em;
+    	position: relative;
+    	top: 10em;
+    	background-color: rgba(255, 255, 255, 0.8);
+    	border-radius: 15px;
+    	height: 14em;
+    	overflow: auto;
+    	margin-bottom: 2em;
     }
     .wi {
-        font-size: 2.5em;
-        color: black;
+    	font-size: 2.5em;
+    	color: black;
     }
     #icon {
-       font-size: 4em; 
+    	font-size: 4em;
     }
-   
+    #fiveDayForecast {
+    	position: relative;
+    	top: 20em;
+    	background-color: rgba(255, 255, 255, 0.8);
+    	border-radius: 15px;
+    	height: 20em;
+    	overflow: auto;
+    	margin-bottom: 3em;
+    	font-size: .4em;
+    }
+    /*the following makes the 5 column forecast*/
+
+    .col-xs-15, .col-sm-15, .col-md-15, .col-lg-15 {
+    	position: relative;
+    	min-height: 1px;
+    	padding-right: 10px;
+    	padding-left: 10px;
+    }
+    .col-xs-15 {
+    	width: 20%;
+    	float: left;
+    }
+    @media (min-width: 768px) {
+    	.col-sm-15 {
+    		width: 20%;
+    		float: left;
+    	}
+    }
+    @media (min-width: 992px) {
+    	.col-md-15 {
+    		width: 20%;
+    		float: left;
+    	}
+    }
+    @media (min-width: 1200px) {
+    	.col-lg-15 {
+    		width: 20%;
+    		float: left;
+    	}
+    }
