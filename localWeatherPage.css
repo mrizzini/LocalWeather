@@ -57,8 +57,8 @@
     	margin-bottom: 3em;
     	font-size: .4em;
     }
+    
     /*the following makes the 5 column forecast*/
-
     .col-xs-15, .col-sm-15, .col-md-15, .col-lg-15 {
     	position: relative;
     	min-height: 1px;

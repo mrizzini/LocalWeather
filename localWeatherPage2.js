@@ -55,33 +55,33 @@ $(document).ready(function() {
 			success: function(data) {
 				console.log("success");
 				var Faren = data.main.temp.toFixed(0);
-				// var valMin = parseFloat(data.main.temp_min);
-				// var farenMin = ((valMin - 273.15) * 1.8) + 32;
-				// farenMin = Math.round(farenMin);
-				//the following lines store the time for the sunrise and sunset using api times
-				var sunriseDate = new Date(data.sys.sunrise * 1000);
-				// Hours part from the timestamp
-				var sunriseHours = sunriseDate.getHours();
-				// Minutes part from the timestamp
-				var sunriseMinutes = "0" + sunriseDate.getMinutes();
-				// Will display time in 10:30 format
-				var sunriseTime = sunriseHours + ':' + sunriseMinutes.substr(-2);
-				var sunsetDate = new Date(data.sys.sunset * 1000);
-				// Hours part from the timestamp
-				var sunsetHours = sunsetDate.getHours();
-				// Minutes part from the timestamp
-				var sunsetMinutes = "0" + sunsetDate.getMinutes();
-				// Will display time in 10:30 format
-				var sunsetTime = sunsetHours + ':' + sunsetMinutes.substr(-2);
-				//the following lines manipulate the DOM based on the api data
 				$('#main').html(data.weather[0].main);
 				$('#temp').html(Faren);
 				$('#degree').html(String.fromCharCode(176));
 				$('#measure').html("F");
 				$('#city').html(data.name);
 				$('#desc').html(data.weather[0].description);
-				$('#sunrise').html(" " + sunriseTime);
-				$('#sunset').html(" " + sunsetTime);
+				$('#sunrise').html(" " + getSunriseTime(data.sys.sunrise));
+				$('#sunset').html(" " + getSunsetTime(data.sys.sunset));
+	
+				function getSunriseTime(sunrise) {
+				    var sunriseDate = new Date(sunrise * 1000);
+				    // Hours part from the timestamp
+				    var sunriseHours = sunriseDate.getHours();
+				    // Minutes part from the timestamp
+				    var sunriseMinutes = "0" + sunriseDate.getMinutes();
+				    // Will display time in 10:30 format
+				    var sunriseTime = sunriseHours + ':' + sunriseMinutes.substr(-2);
+				    return sunriseTime;
+				}
+				function getSunsetTime(sunset) {
+				    var sunsetDate = new Date(sunset * 1000);
+				    var sunsetHours = sunsetDate.getHours();
+				    var sunsetMinutes = "0" + sunsetDate.getMinutes();
+				    var sunsetTime = sunsetHours + ':' + sunsetMinutes.substr(-2);
+				    return sunsetTime;
+				}
+				
 				//the following if else statements manipulate the DOM by displaying icons and changing the background 
 				if (data.weather[0].icon === "01n" || data.weather[0].icon === "01d") {
 					console.log(data.weather[0].icon);
