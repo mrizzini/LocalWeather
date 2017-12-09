@@ -42,7 +42,8 @@ $(document).ready(function() {
 			rain: "https://media2.giphy.com/media/l0Iy5fjHyedk9aDGU/giphy.gif",
 			thunderstorm: "https://media3.giphy.com/media/j69Ma1PlscvTO/giphy.gif",
 			snow: "https://media1.giphy.com/media/OdOfTkw2uVADC/giphy.gif",
-			mist: "https://media2.giphy.com/media/xT8qBgwBouvNofiuuA/giphy.gif"
+			mist: "https://media2.giphy.com/media/xT8qBgwBouvNofiuuA/giphy.gif",
+			defaultPic: "https://images.unsplash.com/photo-1442213391790-7656f6e368b9?auto=format&fit=crop&w=1353&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D"
 		};
 		$.ajax({
 			method: "GET",
@@ -61,13 +62,13 @@ $(document).ready(function() {
 				$('#measure').html("F");
 				$('#city').html(data.name);
 				$('#desc').html(data.weather[0].description);
-				$('#sunrise').html(" " + getSunriseTime(data.sys.sunrise));
-				$('#sunset').html(" " + getSunsetTime(data.sys.sunset));
+				$('#sunrise').html(" " + getSunriseTime(data.sys.sunrise) + "AM ET");
+				$('#sunset').html(" " + getSunsetTime(data.sys.sunset) + "PM ET");
 	
 				function getSunriseTime(sunrise) {
 				    var sunriseDate = new Date(sunrise * 1000);
 				    // Hours part from the timestamp
-				    var sunriseHours = sunriseDate.getHours();
+				    var sunriseHours = (sunriseDate.getHours() + 24) % 12 || 12;
 				    // Minutes part from the timestamp
 				    var sunriseMinutes = "0" + sunriseDate.getMinutes();
 				    // Will display time in 10:30 format
@@ -76,66 +77,89 @@ $(document).ready(function() {
 				}
 				function getSunsetTime(sunset) {
 				    var sunsetDate = new Date(sunset * 1000);
-				    var sunsetHours = sunsetDate.getHours();
+				    var sunsetHours = (sunsetDate.getHours() + 24) % 12 || 12;
 				    var sunsetMinutes = "0" + sunsetDate.getMinutes();
 				    var sunsetTime = sunsetHours + ':' + sunsetMinutes.substr(-2);
 				    return sunsetTime;
 				}
 				
-				//the following if else statements manipulate the DOM by displaying icons and changing the background 
-				if (data.weather[0].icon === "01n" || data.weather[0].icon === "01d") {
-					console.log(data.weather[0].icon);
-					$('#icon').html(icons.clearSky);
-					if (Faren < 50) {
-						$('#bgimg').attr("src", images.clearSkyCold);
-					} else {
-						$('#bgimg').attr("src", images.clearSkyWarm);
-					}
-				} else if (data.weather[0].icon === "02n" || data.weather[0].icon === "02d") {
-					console.log(data.weather[0].icon);
-					$('#icon').html(icons.fewClouds);
-					if (Faren < 50) {
-						$('#bgimg').attr("src", images.fewCloudsCold);
-					} else {
-						$('#bgimg').attr("src", images.fewCloudsWarm);
-					}
-				} else if (data.weather[0].icon === "03n" || data.weather[0].icon === "03d") {
-					console.log(data.weather[0].icon);
-					$('#icon').html(icons.scatteredClouds);
-					if (Faren < 50) {
-						$('#bgimg').attr("src", images.scatteredCloudsCold);
-					} else {
-						$('#bgimg').attr("src", images.scatteredCloudsWarm);
-					}
-				} else if (data.weather[0].icon === "04n" || data.weather[0].icon === "04d") {
-					console.log(data.weather[0].icon);
-					$('#icon').html(icons.brokenClouds);
-					if (Faren < 50) {
-						$('#bgimg').attr("src", images.brokenCloudsCold);
-					} else {
-						$('#bgimg').attr("src", images.brokenCloudsWarm);
-					}
-				} else if (data.weather[0].icon === "09n" || data.weather[0].icon === "09d") {
-					console.log(data.weather[0].icon);
-					$('#icon').html(icons.showerRain);
-					$('#bgimg').attr("src", images.showerRain);
-				} else if (data.weather[0].icon === "10n" || data.weather[0].icon === "10d") {
-					console.log(data.weather[0].icon);
-					$('#icon').html(icons.rain);
-					$('#bgimg').attr("src", images.rain);
-				} else if (data.weather[0].icon === "11n" || data.weather[0].icon === "11d") {
-					console.log(data.weather[0].icon);
-					$('#icon').html(icons.thunderstorm);
-					$('#bgimg').attr("src", images.thunderstorm);
-				} else if (data.weather[0].icon === "13n" || data.weather[0].icon === "13d") {
-					console.log(data.weather[0].icon);
-					$('#icon').html(icons.snow);
-					$('#bgimg').attr("src", images.snow);
-				} else if (data.weather[0].icon === "50n" || data.weather[0].icon === "50d") {
-					console.log(data.weather[0].icon);
-					$('#icon').html(icons.mist);
-					$('#bgimg').attr("src", images.mist);
-				}
+				//the following switch manipulates the DOM by displaying icons and changing the background 
+				var iconForSwitch = data.weather[0].icon;
+                switch (iconForSwitch) {
+                	case "01d":
+                	case "01n":
+                		console.log(data.weather[0].icon + " " + Faren);
+                		$('#icon').html(icons.clearSky);
+                		if (Faren < 50) {
+                			$('#bgimg').attr("src", images.clearSkyCold);
+                		} else {
+                			$('#bgimg').attr("src", images.clearSkyWarm);
+                		}
+                		break;
+                	case "02d":
+                	case "02n":
+                		console.log(data.weather[0].icon + " " + Faren);
+                		$('#icon').html(icons.fewClouds);
+                		if (Faren < 50) {
+                			$('#bgimg').attr("src", images.fewCloudsCold);
+                		} else {
+                			$('#bgimg').attr("src", images.fewCloudsWarm);
+                		}
+                		break;
+                	case "03d":
+                	case "03n":
+                		console.log(data.weather[0].icon + " " + Faren);
+                		$('#icon').html(icons.scatteredClouds);
+                		if (Faren < 50) {
+                			$('#bgimg').attr("src", images.scatteredCloudsCold);
+                		} else {
+                			$('#bgimg').attr("src", images.scatteredCloudsWarm);
+                		}
+                		break;
+                	case "04d":
+                	case "04n":
+                		console.log(data.weather[0].icon + " " + Faren);
+                		$('#icon').html(icons.brokenClouds);
+                		if (Faren < 50) {
+                			$('#bgimg').attr("src", images.brokenCloudsCold);
+                		} else {
+                			$('#bgimg').attr("src", images.brokenCloudsWarm);
+                		}
+                		break;
+                	case "09d":
+                	case "09n":
+                		console.log(data.weather[0].icon + " " + Faren);
+                		$('#icon').html(icons.showerRain);
+                		$('#bgimg').attr("src", images.showerRain);
+                		break;
+                	case "10d":
+                	case "10n":
+                		console.log(data.weather[0].icon + " " + Faren);
+                		$('#icon').html(icons.rain);
+                		$('#bgimg').attr("src", images.rain);
+                		break;
+                	case "11d":
+                	case "11n":
+                		console.log(data.weather[0].icon + " " + Faren);
+                		$('#icon').html(icons.thunderstorm);
+                		$('#bgimg').attr("src", images.thunderstorm);
+                		break;
+                	case "13d":
+                	case "13n":
+                		console.log(data.weather[0].icon + " " + Faren);
+                		$('#icon').html(icons.snow);
+                		$('#bgimg').attr("src", images.snow);
+                		break;
+                	case "50d":
+                	case "50n":
+                		console.log(data.weather[0].icon + " " + Faren);
+                		$('#icon').html(icons.mist);
+                		$('#bgimg').attr("src", images.mist);
+                		break;
+                	default:
+                		$('#bgimg').attr("src", images.defaultPic);
+                }
+
 				//this converts the temp from F to C and vice versa
 				$('#convert').click(function() {
 					if (document.getElementById("measure").innerHTML === "F") {
