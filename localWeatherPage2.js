@@ -143,12 +143,12 @@ $(document).ready(function() {
 						celsius = Math.round(celsius);
 						$('#temp').html(celsius);
 						$('#measure').html("C");
-						$('#buttonText').html("Click to convert to Fahrenheit");
+						$('#convert').html("Click to convert to Fahrenheit");
 						console.log('first success');
 					} else {
 						$('#temp').html(Faren);
 						$('#measure').html("F");
-						$('#buttonText').html("Click to convert to Celsius");
+						$('#convert').html("Click to convert to Celsius");
 						console.log('second success');
 					}
 				});
