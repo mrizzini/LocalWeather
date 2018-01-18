@@ -56,7 +56,7 @@ $(document).ready(function() {
 			success: function(data) {
 				console.log("success");
 				var Faren = data.main.temp.toFixed(0);
-				$('#main').html(data.weather[0].main);
+				$('#main').html(data.weather[0].main); // these manipulate the DOM based on the current weather elements
 				$('#temp').html(Faren);
 				$('#degree').html(String.fromCharCode(176));
 				$('#measure').html("F");
@@ -189,12 +189,12 @@ $(document).ready(function() {
 			},
 			success: function(data3) {
 				console.log("5 day forecast output");
-				$('#oneDayTime').html(getDate(data3.list[7].dt));
+				$('#oneDayTime').html(getDate(data3.list[7].dt)); // these list out the days of the week into the HTML
 				$('#twoDayTime').html(getDate(data3.list[15].dt));
 				$('#threeDayTime').html(getDate(data3.list[23].dt));
 				$('#fourDayTime').html(getDate(data3.list[31].dt));
 				$('#fiveDayTime').html(getDate(data3.list[38].dt));
-				$('#oneDay').html(data3.list[7].weather[0].description);
+				$('#oneDay').html(data3.list[7].weather[0].description); //these list out the description on the days of the week in the HTML. If it is currently 3:00pm, this is showing what the weather will be at 3:00pm of that day
 				$('#twoDay').html(data3.list[15].weather[0].description);
 				$('#threeDay').html(data3.list[23].weather[0].description);
 				$('#fourDay').html(data3.list[31].weather[0].description);
